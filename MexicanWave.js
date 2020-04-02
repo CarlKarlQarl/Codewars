@@ -2,7 +2,6 @@ wave = string => {
     let repeatingArray = stringForEachChar(string)
     let capitalizedArray = waveCapitalization(repeatingArray)
     let removedSpacesArray = removeSpaces(capitalizedArray, string)
-    
     return removedSpacesArray
   }
   
