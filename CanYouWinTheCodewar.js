@@ -26,3 +26,5 @@ codewarResult = (codewarrior, opponent) => {
 }
   
 sum = array => array.reduce((num, memo) => num + memo)
+findLargest = array => array.reduce((num, memo) => memo > num ? memo : num)
+findSmallest = array => array.reduce((num, memo) => memo < num ? memo : num) 
