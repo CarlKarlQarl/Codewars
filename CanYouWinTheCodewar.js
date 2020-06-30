@@ -4,17 +4,20 @@ codewarResult = (codewarrior, opponent) => {
     let sortedOpponent = opponent.sort((a, b) => b - a)
     let results = 0
     
-    //combine with old version, and looking at sum
-    sortedCodewarrior.forEach(attacker => {
-      let defender = findBestFight(attacker, sortedOpponent) || 
-        findStalemate(attacker, sortedOpponent) ||
-        findLargest(sortedOpponent)
-      let defender_index = sortedOpponent.indexOf(defender)
-      console.log("Fight :", attacker, "-", defender)
-      determineVictor(attacker, defender)
-      sortedOpponent.splice(defender_index, 1)
-    })
-    
+    for (let i = 0; i < battle_length; i++){
+      if (sortedCodewarrior[0] < sortedOpponent[0]){
+        let attacker = sortedCodewarrior.pop()
+        let defender = sortedOpponent.shift()
+        console.log(attacker, "-", defender)
+        results += determineVictor(attacker, defender)
+      } else {
+        let attacker = sortedCodewarrior.shift()
+        let defender = sortedOpponent.shift()
+        console.log(attacker, "-", defender)
+        results += determineVictor(attacker, defender)
+      }
+    }
+  
     if (results > 0){
       return "Victory"
     } else if (results < 0){
@@ -24,7 +27,8 @@ codewarResult = (codewarrior, opponent) => {
     }
   }
   
-  findBestFight = (attacker, opponent) => opponent.find((num, index) => num < attacker)
+  sum = array => array.reduce((num, memo) => num + memo)
+  findWinningFight = (attacker, opponent) => opponent.find((num, index) => num < attacker)
   findStalemate = (attacker, opponent) => opponent.find((num, index) => num == attacker)
   findLargest = array => array.reduce((num, memo) => memo > num ? memo : num)
   findSmallest = array => array.reduce((num, memo) => memo < num ? memo : num) 
