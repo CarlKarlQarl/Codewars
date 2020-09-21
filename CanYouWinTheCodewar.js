@@ -9,11 +9,7 @@ codewarResult = (codewarrior, opponent) => {
             let attacker = sortedCodewarrior.pop()
             let defender = sortedOpponent.pop()
             results += determineVictor(attacker, defender)
-        } else if (sortedCodewarrior[0] < sortedOpponent[0]){
-            let attacker = sortedCodewarrior.shift()
-            let defender = sortedOpponent.pop()
-            results += determineVictor(attacker, defender)
-        } else if (sortedCodewarrior[0] == sortedOpponent[0] && sortedCodewarrior[sortedCodewarrior.length - 1] <= sortedOpponent[sortedOpponent.length - 1]){
+        } else if (sortedCodewarrior[0] <= sortedOpponent[0]){
             let attacker = sortedCodewarrior.shift()
             let defender = sortedOpponent.pop()
             results += determineVictor(attacker, defender)
